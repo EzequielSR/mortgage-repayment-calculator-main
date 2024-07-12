@@ -114,7 +114,8 @@
       color: hsl(200, 24%, 40%);
       color: hsl(202, 55%, 16%);
     }
-    .clear-all:hover{
+
+    .clear-all:hover {
       color: hsl(200, 24%, 40%);
     }
   </style>
@@ -122,7 +123,7 @@
 
 <body>
   <div class="container">
-    
+
     <div class="left-panel ">
       <div class="d-flex justify-content-lg-between pb-5">
 
@@ -147,27 +148,34 @@
           <label for="" class="form-label" style="color: hsl(200, 26%, 54%);">Mortgage Term</label>
           <div class="input-group">
             <input type="number" class="form-control">
-            <span class="input-group-text" style="color:hsl(200, 24%, 40%); font-weight: bold; background-color:hsl(202, 86%, 94%) ;">years</span>
+            <span class="input-group-text"
+              style="color:hsl(200, 24%, 40%); font-weight: bold; background-color:hsl(202, 86%, 94%) ;">years</span>
           </div>
         </div>
         <div class="form-group col-md-6">
           <label for="rate" class="form-label" style="color: hsl(200, 26%, 54%);">Interest Rate</label>
           <div class="input-group">
             <input type="number" step="0.01" id="rate" class="form-control">
-            <span class="input-group-text" style="color:hsl(200, 24%, 40%); font-weight: bold; background-color:hsl(202, 86%, 94%) ;">%</span>
+            <span class="input-group-text"
+              style="color:hsl(200, 24%, 40%); font-weight: bold; background-color:hsl(202, 86%, 94%) ;">%</span>
           </div>
         </div>
       </div>
-      
+
 
 
       <div class="form-group">
         <label for="type" class="form-label" style="color: hsl(200, 26%, 54%);;">Mortgage Type</label>
         <div class="my-3">
-          <div class="form-check">
+          <div class="form-check mb-2">
+
             <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
             <label class="form-check-label form-control" for="credit"
-              style="color: hsl(202, 55%, 16%); font-weight: bold;">Repayment</label>
+              style="color: hsl(202, 55%, 16%); font-weight: bold;">
+              Repayment
+
+            </label>
+
           </div>
           <div class="form-check">
             <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
