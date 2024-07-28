@@ -27,6 +27,17 @@
       height: 100vh;
     }
 
+    .list-group-item{
+      border-radius: 4px;
+      
+    }
+
+    .item-1{
+      margin-bottom: 10px;
+    }
+    li.item-2{
+      border-radius: 4px;
+    }
     .container {
       background: white;
       border-radius: 16px;
@@ -97,7 +108,7 @@
 
 
     .btn-calculate:hover {
-      background-color: hsl(61, 100%, 81%);
+      background-color: hsl(61, 71%, 69%);
     }
 
     .clear-all {
@@ -107,16 +118,24 @@
       font-weight: 600;
       cursor: pointer;
       /* margin-bottom: 20px; */
-      color: hsl(0, 0%, 100%);
+      /* color: hsl(0, 0%, 100%);
       color: hsl(202, 86%, 94%);
       color: hsl(203, 41%, 72%);
       color: hsl(200, 26%, 54%);
       color: hsl(200, 24%, 40%);
-      color: hsl(202, 55%, 16%);
+      color: hsl(202, 55%, 16%); */
     }
 
     .clear-all:hover {
       color: hsl(200, 24%, 40%);
+    }
+
+    .group-2{
+      margin-top: 3px;
+    }
+    .item-1:hover,.item-2:hover{
+      border-color: hsl(61, 71%, 69%);
+      border-width: 2px;
     }
   </style>
 </head>
@@ -134,12 +153,10 @@
       <div class="form-group">
         <label for="amount" class="form-label" style="color: hsl(200, 26%, 54%); ">Mortgage Amount</label>
         <div class="input-group">
-
-
           <span class="input-group-text"
-            style="background-color:hsl(202, 86%, 94%); font-weight: bold; color:hsl(200, 24%, 40%) ;">£</span>
+          style="background-color:hsl(202, 86%, 94%); font-weight: bold; color:hsl(200, 24%, 40%) ;">£</span>
           <input type="number" class="form-control">
-        </div>
+          </div>
       </div>
 
 
@@ -167,22 +184,18 @@
       <div class="form-group">
         <label for="type" class="form-label" style="color: hsl(200, 26%, 54%);;">Mortgage Type</label>
         <div class="my-3">
-          <div class="form-check mb-2">
-
-            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
-            <label class="form-check-label form-control" for="credit"
-              style="color: hsl(202, 55%, 16%); font-weight: bold;">
-              Repayment
-
-            </label>
-
-          </div>
-          <div class="form-check">
-            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
-            <label class="form-check-label form-control" for="debit"
-              style="color: hsl(202, 55%, 16%); font-weight: bold">Interest Only</label>
-          </div>
-
+          <ul class="list-group">
+            <li class="list-group-item item-1">
+              <input type="radio" class="form-check-input me-1" name="listGroupRadio" value="" id="firstRadio">
+              <label for="firstRadio" class="form-check-label">Repayment</label>
+            </li>
+          </ul>
+          <ul class="list-group group-2">
+            <li class="list-group-item item-2">
+              <input type="radio" class="form-check-input me-1" name="listGroupRadio" value="" id="SecondRadio">
+              <label for="SecondRadio" class="form-check-label">interest Only</label>
+            </li>
+          </ul>
         </div>
       </div>
 
