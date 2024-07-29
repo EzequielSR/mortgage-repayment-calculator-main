@@ -170,6 +170,32 @@
       outline: none;
       padding: 5px;
     }
+    .selected-radio {
+  background-color: hsla(61, 71%, 69%, 0.363); /* Fundo verde para o item */
+}
+
+.selected-radio .form-check-input:checked {
+  background-color: white; /* Fundo verde para a bolinha do meio */
+  border-color: hsl(61, 71%, 69%);
+  position: relative; /* Borda verde */
+}
+
+.selected-radio .form-check-input:checked::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: hsl(61, 71%, 69%); /* Cor da bolinha ao selecionar */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.form-check-input:focus {
+  outline: none;
+  box-shadow: none;
+}
 
   </style>
 </head>
@@ -268,6 +294,36 @@ inputs.forEach(function(input) {
     inputGroup.classList.remove('focused');
   });
 });
+document.addEventListener('DOMContentLoaded', function () {
+  // Seleciona todos os inputs de rádio com a classe form-check-input
+  const radios = document.querySelectorAll('.form-check-input');
+
+  radios.forEach(radio => {
+    radio.addEventListener('click', function () {
+      // Remove a classe selected-radio de todos os elementos list-group-item
+      document.querySelectorAll('.list-group-item').forEach(item => {
+        item.classList.remove('selected-radio');
+      });
+
+      // Adiciona a classe selected-radio ao elemento list-group-item pai do rádio clicado
+      this.closest('.list-group-item').classList.add('selected-radio');
+    });
+  });
+});
+
+document.querySelector('.clear-all').addEventListener('click', function(event) {
+  event.preventDefault(); // Impede o comportamento padrão do link
+
+  // Seleciona todos os inputs do formulário
+  var inputs = document.querySelectorAll('input');
+
+  // Itera sobre os inputs e limpa seus valores
+  inputs.forEach(function(input) {
+    input.value = '';
+  });
+});
+
+
   </script>
 </body>
 
