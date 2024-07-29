@@ -211,6 +211,12 @@
         outline: none;
         box-shadow: none;
       }
+      div#result-container{
+        background-color: hsla(201, 50%, 8%, 0.692) ;
+        width: 100%; 
+        /* background-color: hsl(202, 55%, 16%);  */
+        color: white;
+      }
     </style>
   </head>
 
@@ -336,18 +342,25 @@
           </button>
         </div>
       </div>
-      <div class="right-panel d-flex align-items-center">
-        <img
-          src="assets/images/illustration-empty.svg"
-          alt=""
-          class="img-fluid ms-3"
-          style="width: 12rem; padding-bottom: 10px"
-        />
-        <h4 class="fw-bold" style="margin-bottom: 15px">Results Shown here</h4>
-        <p class="" style="font-size: 14px; color: hsl(203, 41%, 72%)">
-          Complete the form and click “calculate repayments” to see what your
-          monthly repayments would be.
-        </p>
+      <div class="right-panel d-flex flex-column align-items-center">
+        <!-- Conteúdo inicial -->
+        <div id="initial-content">
+          <img
+            src="assets/images/illustration-empty.svg"
+            alt=""
+            class="img-fluid ms-3"
+            style="width: 12rem; padding-bottom: 10px"
+          />
+          <h4 class="fw-bold" style="margin-bottom: 15px">Results Shown here</h4>
+          <p class="" style="font-size: 14px; color: hsl(203, 41%, 72%)">
+            Complete the form and click “calculate repayments” to see what your
+            monthly repayments would be.
+          </p>
+        </div>
+        <!-- Caixa de resultado -->
+        <div id="result-container" class="d-none border border-light rounded p-4 mt-4">
+          <p id="result-text">Results will be shown here.</p>
+        </div>
       </div>
     </div>
 
@@ -399,49 +412,94 @@
             input.value = "";
           });
         });
-      document
-        .getElementById("calculate")
-        .addEventListener("click", function () {
-          // Get values from the inputs
-          var amount = parseFloat(document.getElementById("amount").value);
-          var term = parseInt(document.getElementById("term").value);
-          var rate = parseFloat(document.getElementById("rate").value) / 100;
-          var type = document.querySelector(
-            'input[name="listGroupRadio"]:checked'
-          ).value;
+        document.getElementById("calculate").addEventListener("click", function () {
+  // Get values from the inputs
+  var amount = parseFloat(document.getElementById("amount").value);
+  var term = parseInt(document.getElementById("term").value);
+  var rate = parseFloat(document.getElementById("rate").value) / 100;
+  var type = document.querySelector('input[name="listGroupRadio"]:checked').value;
 
-          // Check if the values are valid
-          if (isNaN(amount) || isNaN(term) || isNaN(rate) || !type) {
-            console.log(
-              "Please enter valid numbers for all fields and select a mortgage type."
-            );
-            return;
-          }
+  // Check if the values are valid
+  if (isNaN(amount) || isNaN(term) || isNaN(rate) || !type) {
+    console.log("Please enter valid numbers for all fields and select a mortgage type.");
+    return;
+  }
 
-          var monthlyPayment = 0;
+  var monthlyPayment = 0;
 
-          // Calculate based on the mortgage type
-          if (type === "repayment") {
-            // Repayment mortgage calculation
-            var monthlyRate = rate / 12;
-            var numberOfPayments = term * 12;
+  // Calculate based on the mortgage type
+  if (type === "repayment") {
+    // Repayment mortgage calculation
+    var monthlyRate = rate / 12;
+    var numberOfPayments = term * 12;
 
-            if (monthlyRate > 0) {
-              monthlyPayment =
-                (amount * monthlyRate) /
-                (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
-            } else {
-              monthlyPayment = amount / numberOfPayments; // For zero interest rate
-            }
-          } else if (type === "interestOnly") {
-            // Interest-only mortgage calculation
-            var monthlyRate = rate / 12;
-            monthlyPayment = amount * monthlyRate;
-          }
+    if (monthlyRate > 0) {
+      monthlyPayment =
+        (amount * monthlyRate) /
+        (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+    } else {
+      monthlyPayment = amount / numberOfPayments; // For zero interest rate
+    }
+  } else if (type === "interestOnly") {
+    // Interest-only mortgage calculation
+    var monthlyRate = rate / 12;
+    monthlyPayment = amount * monthlyRate;
+  }
 
-          // Output the result to the console
-          console.log("Monthly Payment: £" + monthlyPayment.toFixed(2));
-        });
+  // Update the result container with the calculated monthly payment
+  var resultText = document.getElementById("result-text");
+  resultText.textContent = "Monthly Payment: £" + monthlyPayment.toFixed(2);
+
+  // Hide initial content and show result container
+  document.getElementById("initial-content").classList.add("d-none");
+  document.getElementById("result-container").classList.remove("d-none");
+});
+function displayResult(amount, term, rate, type, monthlyPayment) {
+  console.log(`Amount: £${amount}`);
+  console.log(`Term: ${term} years`);
+  console.log(`Rate: ${rate * 100}%`);
+  console.log(`Type: ${type}`);
+  console.log(`Monthly Payment: £${monthlyPayment.toFixed(2)}`);
+}
+
+document.getElementById("calculate").addEventListener("click", function () {
+  var amount = parseFloat(document.getElementById("amount").value);
+  var term = parseInt(document.getElementById("term").value);
+  var rate = parseFloat(document.getElementById("rate").value) / 100;
+  var type = document.querySelector('input[name="listGroupRadio"]:checked').value;
+
+  if (isNaN(amount) || isNaN(term) || isNaN(rate) || !type) {
+    console.log("Please enter valid numbers for all fields and select a mortgage type.");
+    return;
+  }
+
+  var monthlyPayment = 0;
+
+  if (type === "repayment") {
+    var monthlyRate = rate / 12;
+    var numberOfPayments = term * 12;
+
+    if (monthlyRate > 0) {
+      monthlyPayment =
+        (amount * monthlyRate) /
+        (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+    } else {
+      monthlyPayment = amount / numberOfPayments;
+    }
+  } else if (type === "interestOnly") {
+    var monthlyRate = rate / 12;
+    monthlyPayment = amount * monthlyRate;
+  }
+
+  displayResult(amount, term, rate, type, monthlyPayment);
+
+  var resultText = document.getElementById("result-text");
+  resultText.textContent = "Monthly Payment: £" + monthlyPayment.toFixed(2);
+
+  document.getElementById("initial-content").classList.add("d-none");
+  document.getElementById("result-container").classList.remove("d-none");
+});
+
     </script>
   </body>
 </html>
