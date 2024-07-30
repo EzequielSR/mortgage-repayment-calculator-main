@@ -33,7 +33,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-height: 100dvh;
       }
 
       .list-group-item {
@@ -51,33 +51,41 @@
         border-radius: 16px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         max-width: 900px;
+        width: 100%;
         display: flex;
         overflow: auto;
         padding: 0;
+        flex-direction: column;
       }
 
       .left-panel,
       .right-panel {
-        padding: 40px;
+        padding: 20px;
       }
 
       .left-panel {
-        width: 50%;
+        width: 100%;
+        order: 1;
+      }
+      .header-title{
+        display: flex;
+        justify-content: space-between;
       }
 
       .right-panel {
         background-color: hsl(202, 55%, 16%);
         color: white;
-        width: 50%;
+        width: 100%;
         text-align: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        border-radius: 0px 0px 0px 99px;
+        border-radius: 0px;
+        order: 2;
       }
 
       .right-panel h2 {
-        font-size: 2.5rem;
+        font-size: 1rem;
         margin-bottom: 20px;
       }
 
@@ -122,13 +130,6 @@
         color: hsl(200, 26%, 54%);
         font-weight: 600;
         cursor: pointer;
-        /* margin-bottom: 20px; */
-        /* color: hsl(0, 0%, 100%);
-      color: hsl(202, 86%, 94%);
-      color: hsl(203, 41%, 72%);
-      color: hsl(200, 26%, 54%);
-      color: hsl(200, 24%, 40%);
-      color: hsl(202, 55%, 16%); */
       }
 
       .clear-all:hover {
@@ -179,6 +180,19 @@
       .border-input {
         outline: none;
         padding: 5px;
+        border: none; 
+      }
+      .border-input1{
+        border: none;
+        width: 390px
+      }
+      .border-input2{
+        border: none;
+        width: 84.8%
+      }
+      .border-input3{
+        border: none;
+        width: 90.7%
       }
       .selected-radio {
         background-color: hsla(
@@ -271,13 +285,54 @@
   margin-top: 20px;
   font-size: 14px;
 }
+
+@media (min-width: 768px) {
+  .container{
+    flex-direction: row;
+  }
+  .left-panel, .right-panel{
+    width: 50%;
+  }
+  .right-panel{
+    border-radius: 0px 0px 0px 99px;
+  }
+  .right-panel h2{
+    font-size: 2.5rem;
+  }
+  .right-panel p{
+    font-size: 1.25rem;
+  }
+  .border-input1{
+        border: none;
+        width: 338px
+      }
+      .border-input2{
+        border: none;
+        width: 62.02%
+      }
+      .border-input3{
+        border: none;
+        width: 76.5%
+      }
+}
+@media (min-width: 1440px){
+  .container{
+    max-width: 910px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .left-panel, .right-panel{
+    padding: 40px;
+  }
+
+}
     </style>
   </head>
 
   <body>
     <div class="container">
       <div class="left-panel">
-        <div class="d-flex justify-content-lg-between pb-5">
+        <div class="d-flex justify-content-lg-between pb-5 header-title">
           <h5 class="fw-bold" style="color: hsl(202, 55%, 16%)">
             Mortgage Calculator
           </h5>
@@ -295,10 +350,9 @@
             <span class="input-group-text">£</span>
             <input
               type="number"
-              class="border-input amount"
+              class="border-input1 amount"
               id="amount"
               name="amount"
-              style="border: none; width: 327px"
               required
             />
           </div>
@@ -315,10 +369,9 @@
             <div class="input-group">
               <input
                 type="number"
-                class="border-input amount"
+                class="border-input2 amount"
                 id="term"
                 name="term"
-                style="border: none; width: 61.6%"
                 required
               />
               <span class="input-group-text">years</span>
@@ -337,8 +390,7 @@
                 step="0.01"
                 id="rate"
                 name="rate"
-                class="border-input amount"
-                style="border: none; width: 76.5%"
+                class="border-input3 amount"
                 required
               />
               <span class="input-group-text">%</span>
