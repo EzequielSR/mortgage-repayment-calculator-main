@@ -432,7 +432,7 @@
           <label for="type" class="form-label" style="color: hsl(200, 26%, 54%)"
             >Mortgage Type</label
           >
-          <div class="my-3">
+          <div class="my-3 mortgagetyp">
             <ul class="list-group">
               <li class="list-group-item item-1">
                 <input
@@ -667,7 +667,7 @@ function toggleVisibility() {
 
 function showError(inputId, message, isRadio = false) {
   if (isRadio) {
-    const radioContainer = document.querySelector(".list-group");
+    const radioContainer = document.querySelector(".mortgagetyp");
     const errorMessage = document.createElement("div");
     errorMessage.className = "error-message";
     errorMessage.textContent = message;
