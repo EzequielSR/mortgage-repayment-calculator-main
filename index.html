@@ -239,12 +239,12 @@
     background-color: #273c5a;
     border-radius: 10px;
     padding: 20px;
-    text-align: center;
+    text-align: left;
 }
 
 /* Rótulos de resultados */
 .result-label {
-    font-size: 0.9em;
+    font-size: 14px;
     color: #c0c0c0;
     margin: 10px 0;
 }
@@ -412,16 +412,16 @@
           </p>
         </div>
         <!-- Caixa de resultado -->
-        <div id="result-container" class="d-none d-flex flex-md-column align-content-lg-stretch pb-5" style="margin-top: -3rem;">
+        <div id="result-container" class="d-none d-flex flex-md-column align-content-lg-stretch pb-5">
           <div class="text">
             <h5 class="fw-bold">Your results</h5>
             <p>Your results are shown below based on the information you provided. 
               To adjust the results, edit the form and click “calculate repayments” again.</p>
 
           </div>
-          <div class="result-box">
+          <div class="result-box" >
             <p class="result-label">Your monthly repayments</p>
-            <p class="result-text" id="result-text"></p>
+            <p class="result-text" id="result-text" style="font-size: 3rem;"></p>
             <hr>
             <p class="result-label">Total you'll repay over the term</p>
             <p class="result-value" id="total-repayment">£0.00</p>
