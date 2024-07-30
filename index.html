@@ -341,6 +341,21 @@
           padding: 40px;
         }
       }
+      .error {
+  border: 2px solid red;
+  border-radius: 7px;
+}
+.error-background{
+  background-color: red;
+  color: white;
+  border: none;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
     </style>
   </head>
 
@@ -563,71 +578,113 @@
             input.value = "";
           });
         });
-      document
-        .getElementById("calculate")
-        .addEventListener("click", function () {
-          // Get values from the inputs
-          var amount = parseFloat(document.getElementById("amount").value);
-          var term = parseInt(document.getElementById("term").value);
-          var rate = parseFloat(document.getElementById("rate").value) / 100;
-          var type = document.querySelector(
-            'input[name="listGroupRadio"]:checked'
-          ).value;
+        document.getElementById("calculate").addEventListener("click", function () {
+  clearErrors();
 
-          // Check if the values are valid
-          if (isNaN(amount) || isNaN(term) || isNaN(rate) || !type) {
-            console.log(
-              "Please enter valid numbers for all fields and select a mortgage type."
-            );
-            return;
-          }
+  // Obtém valores dos inputs
+  const amount = parseFloat(document.getElementById("amount").value);
+  const term = parseInt(document.getElementById("term").value);
+  const rate = parseFloat(document.getElementById("rate").value) / 100;
+  const typeElement = document.querySelector('input[name="listGroupRadio"]:checked');
 
-          var monthlyPayment = 0;
+  // Verifica se os campos estão preenchidos
+  if (!validateFields(amount, term, rate, typeElement)) return;
 
-          // Calculate based on the mortgage type
-          if (type === "repayment") {
-            // Repayment mortgage calculation
-            var monthlyRate = rate / 12;
-            var numberOfPayments = term * 12;
+  // Calcula o pagamento mensal
+  const { monthlyPayment, totalRepayment } = calculatePayments(amount, term, rate, typeElement.value);
 
-            if (monthlyRate > 0) {
-              monthlyPayment =
-                (amount * monthlyRate) /
-                (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
-            } else {
-              monthlyPayment = amount / numberOfPayments; // For zero interest rate
-            }
+  // Atualiza o container de resultado com o pagamento mensal calculado
+  updateResults(monthlyPayment, totalRepayment);
 
-            totalRepayment = monthlyPayment * numberOfPayments;
-          } else if (type === "interestOnly") {
-            // Interest-only mortgage calculation
-            var monthlyRate = rate / 12;
-            monthlyPayment = amount * monthlyRate;
+  // Oculta conteúdo inicial e mostra o container de resultado
+  toggleVisibility();
+});
 
-            totalRepayment = monthlyPayment * term * 12;
-          }
+function clearErrors() {
+  document.querySelectorAll(".error-message").forEach(message => message.remove());
+  document.querySelectorAll(".border-input1, .border-input2, .border-input3").forEach(input => {
+    input.classList.remove("error");
+    input.parentElement.querySelector(".input-group-text")?.classList.remove("error-background");
+  });
+}
 
-          // Update the result container with the calculated monthly payment
-          var resultText = document.getElementById("result-text");
-          resultText.textContent = "£" + monthlyPayment.toFixed(2);
+function validateFields(amount, term, rate, typeElement) {
+  let isValid = true;
 
-          var totalRepaymentElement =
-            document.getElementById("total-repayment");
-          totalRepaymentElement.textContent = "£" + totalRepayment.toFixed(2);
+  if (isNaN(amount)) {
+    showError("amount", "This field is required");
+    isValid = false;
+  }
 
-          // Hide initial content and show result container
-          document.getElementById("initial-content").classList.add("d-none");
-          document
-            .getElementById("result-container")
-            .classList.remove("d-none");
-        });
-      function displayResult(amount, term, rate, type, monthlyPayment) {
-        console.log(`Amount: £${amount}`);
-        console.log(`Term: ${term} years`);
-        console.log(`Rate: ${rate * 100}%`);
-        console.log(`Type: ${type}`);
-        console.log(`Monthly Payment: £${monthlyPayment.toFixed(2)}`);
-      }
+  if (isNaN(term)) {
+    showError("term", "This field is required");
+    isValid = false;
+  }
+
+  if (isNaN(rate)) {
+    showError("rate", "This field is required");
+    isValid = false;
+  }
+
+  if (!typeElement) {
+    showError("type", "This field is required", true);
+    isValid = false;
+  }
+
+  return isValid;
+}
+
+function calculatePayments(amount, term, rate, type) {
+  let monthlyPayment = 0;
+  let totalRepayment = 0;
+  const monthlyRate = rate / 12;
+  const numberOfPayments = term * 12;
+
+  if (type === "repayment") {
+    if (monthlyRate > 0) {
+      monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+    } else {
+      monthlyPayment = amount / numberOfPayments;
+    }
+    totalRepayment = monthlyPayment * numberOfPayments;
+  } else if (type === "interestOnly") {
+    monthlyPayment = amount * monthlyRate;
+    totalRepayment = monthlyPayment * numberOfPayments;
+  }
+
+  return { monthlyPayment, totalRepayment };
+}
+
+function updateResults(monthlyPayment, totalRepayment) {
+  document.getElementById("result-text").textContent = "£" + monthlyPayment.toFixed(2);
+  document.getElementById("total-repayment").textContent = "£" + totalRepayment.toFixed(2);
+}
+
+function toggleVisibility() {
+  document.getElementById("initial-content").classList.add("d-none");
+  document.getElementById("result-container").classList.remove("d-none");
+}
+
+function showError(inputId, message, isRadio = false) {
+  if (isRadio) {
+    const radioContainer = document.querySelector(".list-group");
+    const errorMessage = document.createElement("div");
+    errorMessage.className = "error-message";
+    errorMessage.textContent = message;
+    radioContainer.appendChild(errorMessage);
+  } else {
+    const inputElement = document.getElementById(inputId);
+    inputElement.classList.add("error");
+    inputElement.parentElement.parentElement.querySelector(".input-group-text")?.classList.add("error-background");
+
+    const errorMessage = document.createElement("div");
+    errorMessage.className = "error-message";
+    errorMessage.textContent = message;
+    inputElement.parentElement.parentElement.appendChild(errorMessage);
+  }
+}
+
+
     </script>
   </body>
 </html>
