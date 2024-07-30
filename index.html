@@ -424,7 +424,7 @@
             <p class="result-text" id="result-text" style="font-size: 3rem;color: hsl(61, 70%, 52%);"></p>
             <hr>
             <p class="result-label" style="font-size: 14px;">Total you'll repay over the term</p>
-            <p class="result-value" id="total-repayment">£0.00</p>
+            <p class="result-value" id="total-repayment"></p>
           </div>
         </div>
         
@@ -507,15 +507,23 @@
     } else {
       monthlyPayment = amount / numberOfPayments; // For zero interest rate
     }
+
+    totalRepayment = monthlyPayment * numberOfPayments;
+
   } else if (type === "interestOnly") {
     // Interest-only mortgage calculation
     var monthlyRate = rate / 12;
     monthlyPayment = amount * monthlyRate;
+
+    totalRepayment = monthlyPayment * term * 12
   }
 
   // Update the result container with the calculated monthly payment
   var resultText = document.getElementById("result-text");
   resultText.textContent = "£" + monthlyPayment.toFixed(2);
+
+  var totalRepaymentElement = document.getElementById("total-repayment")
+  totalRepaymentElement.textContent = "£" + totalRepayment.toFixed(2)
 
   // Hide initial content and show result container
   document.getElementById("initial-content").classList.add("d-none");
