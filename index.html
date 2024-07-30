@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google Fonts Link -->
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <!-- Bootstrap CSS Link -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
+    <!-- Favicon Link -->
     <link
       rel="shortcut icon"
       href="assets/images/favicon-32x32.png"
@@ -21,6 +23,7 @@
     />
     <title>Mortgage Calculator</title>
     <style>
+      /* Universal Styles */
       * {
         margin: 0;
         padding: 0;
@@ -28,6 +31,7 @@
         font-family: "Plus Jakarta Sans", sans-serif;
       }
 
+      /* Body Styles */
       body {
         background-color: #e0f7fa;
         display: flex;
@@ -36,7 +40,7 @@
         min-height: 100dvh;
         flex-direction: column;
       }
-
+      /* Styles for List Group Items */
       .list-group-item {
         border-radius: 4px;
       }
@@ -47,6 +51,7 @@
       li.item-2 {
         border-radius: 4px;
       }
+      /* Container Styles */
       .container {
         background: white;
         border-radius: 16px;
@@ -58,7 +63,7 @@
         padding: 0;
         flex-direction: column;
       }
-
+      /* Panel Styles */
       .left-panel,
       .right-panel {
         padding: 20px;
@@ -95,6 +100,7 @@
         margin-bottom: 10px;
       }
 
+      /* Form Styles */
       .form-group {
         margin-bottom: 20px;
       }
@@ -112,7 +118,7 @@
         border: 1px solid #bdbdbd;
         width: 100%;
       }
-
+      /* Button Styles */
       .btn-calculate {
         background-color: hsl(61, 70%, 52%);
         border: none;
@@ -136,7 +142,7 @@
       .clear-all:hover {
         color: hsl(200, 24%, 40%);
       }
-
+      /* Input Styles */
       .group-2 {
         margin-top: 3px;
       }
@@ -149,31 +155,27 @@
         background-color: hsl(202, 86%, 94%);
         font-weight: bold;
         color: hsl(200, 24%, 40%);
-        border-right: none; /* Remove a borda direita do span */
+        border-right: none; /* Remove right border from span */
       }
 
       .form-control {
-        border-left: none; /* Remove a borda esquerda do input */
+        border-left: none; /* Remove left border from input */
       }
 
       .input-group {
-        border: 1px solid #ced4da; /* Aplica a borda ao contêiner */
-        border-radius: 0.5rem; /* Aplica um raio de borda */
+        border: 1px solid #ced4da;
+        border-radius: 0.5rem;
       }
 
       .input-group:hover {
-        border-color: hsl(200, 26%, 54%); /* Cor da borda no hover */
+        border-color: hsl(200, 26%, 54%);
       }
       .input-group.focused {
         border-color: hsl(61, 71%, 69%);
       }
 
       .input-group.focused .input-group-text {
-        background-color: hsl(
-          61,
-          71%,
-          69%
-        ); /* Cor de fundo do span quando focado */
+        background-color: hsl(61, 71%, 69%);
       }
       .form-label {
         color: hsl(200, 26%, 54%);
@@ -196,18 +198,13 @@
         width: 90.7%;
       }
       .selected-radio {
-        background-color: hsla(
-          61,
-          71%,
-          69%,
-          0.363
-        ); /* Fundo verde para o item */
+        background-color: hsla(61, 71%, 69%, 0.363);
       }
 
       .selected-radio .form-check-input:checked {
-        background-color: white; /* Fundo verde para a bolinha do meio */
+        background-color: white;
         border-color: hsl(61, 71%, 69%);
-        position: relative; /* Borda verde */
+        position: relative;
       }
 
       .selected-radio .form-check-input:checked::before {
@@ -226,7 +223,7 @@
         outline: none;
         box-shadow: none;
       }
-      /* Estilo do container principal */
+      /* Main container styles */
       .result-container {
         background-color: #1c3b57;
         color: #fff;
@@ -236,20 +233,20 @@
         margin: 20px auto;
       }
 
-      /* Título da seção de resultados */
+      /* Result section title styles */
       .result-container h2 {
         margin-top: 0;
         font-size: 1.5em;
         font-weight: normal;
       }
 
-      /* Texto explicativo */
+      /* Explanatory text styles */
       .result-container p {
         font-size: 14px;
         line-height: 1.5;
       }
 
-      /* Caixa de resultados */
+      /* Result box styles */
       .result-box {
         background-color: hsl(201, 56%, 11%);
         border-radius: 10px;
@@ -258,20 +255,20 @@
         text-align: left;
       }
 
-      /* Rótulos de resultados */
+      /* Result label styles */
       .result-label {
         color: hsl(203, 41%, 72%);
         margin: 10px 0;
       }
 
-      /* Valores de resultados */
+      /* Result value styles */
       .result-value {
         font-size: 1.8em;
         font-weight: bold;
         color: white;
       }
 
-      /* Linha horizontal */
+      /* Horizontal line styles */
       .result-box hr {
         border: none;
         border-top: 1px solid #c0c0c0;
@@ -288,11 +285,12 @@
         margin-top: 20px;
         font-size: 14px;
       }
-      .attribution{
+      .attribution {
         font-size: 11px;
         text-align: center;
         margin-top: 10px;
       }
+      /* Responsive Styles for Medium Screens and Up */
       @media (min-width: 768px) {
         .container {
           flex-direction: row;
@@ -323,13 +321,14 @@
           width: 76.5%;
         }
         .result-container {
-          padding: 40px; /* Padding maior para telas maiores */
-          max-width: 600px; /* Aumentar a largura máxima em telas maiores */
+          padding: 40px;
+          max-width: 600px;
         }
         .result-ctn {
           flex-direction: row;
         }
       }
+      /* Media Query for Big screens*/
       @media (min-width: 1440px) {
         .container {
           max-width: 910px;
@@ -342,25 +341,27 @@
         }
       }
       .error {
-  border: 2px solid red;
-  border-radius: 7px;
-}
-.error-background{
-  background-color: red;
-  color: white;
-  border: none;
-}
+        border: 2px solid red;
+        border-radius: 7px;
+      }
+      .error-background {
+        background-color: red;
+        color: white;
+        border: none;
+      }
 
-.error-message {
-  color: red;
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-}
+      .error-message {
+        color: red;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+      }
     </style>
   </head>
 
   <body>
+    <!-- Main Container -->
     <div class="container">
+      <!-- Left Panel for Form -->
       <div class="left-panel">
         <div class="d-flex justify-content-lg-between pb-5 header-title">
           <h5 class="fw-bold" style="color: hsl(202, 55%, 16%)">
@@ -368,7 +369,7 @@
           </h5>
           <a href="#" class="clear-all">Clear All</a>
         </div>
-
+        <!-- Loan Amount -->
         <div class="form-group">
           <label
             for="amount"
@@ -463,7 +464,7 @@
             </ul>
           </div>
         </div>
-
+        <!-- Calculate Button -->
         <div class="d-flex align-items-center justify-content-between">
           <button
             class="w-100 btn btn-lg btn-calculate"
@@ -478,8 +479,9 @@
           </button>
         </div>
       </div>
+      <!-- Right Panel for Results -->
       <div class="right-panel d-flex flex-column align-items-center">
-        <!-- Conteúdo inicial -->
+        <!--Initial content -->
         <div id="initial-content">
           <img
             src="assets/images/illustration-empty.svg"
@@ -527,39 +529,36 @@
       </div>
     </div>
     <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-      Coded by <a href="https://www.frontendmentor.io/profile/EzequielSR">Ezequiel</a>.
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by
+      <a href="https://www.frontendmentor.io/profile/EzequielSR">Ezequiel</a>.
     </div>
+    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       var inputs = document.querySelectorAll(".amount");
 
       inputs.forEach(function (input) {
-        // Seleciona o contêiner input-group do input atual
         var inputGroup = input.parentElement;
 
-        // Adiciona um evento de foco no input
         input.addEventListener("focus", function () {
           inputGroup.classList.add("focused");
         });
 
-        // Adiciona um evento de desfoco no input
         input.addEventListener("blur", function () {
           inputGroup.classList.remove("focused");
         });
       });
       document.addEventListener("DOMContentLoaded", function () {
-        // Seleciona todos os inputs de rádio com a classe form-check-input
         const radios = document.querySelectorAll(".form-check-input");
 
         radios.forEach((radio) => {
           radio.addEventListener("click", function () {
-            // Remove a classe selected-radio de todos os elementos list-group-item
             document.querySelectorAll(".list-group-item").forEach((item) => {
               item.classList.remove("selected-radio");
             });
 
-            // Adiciona a classe selected-radio ao elemento list-group-item pai do rádio clicado
             this.closest(".list-group-item").classList.add("selected-radio");
           });
         });
@@ -568,123 +567,136 @@
       document
         .querySelector(".clear-all")
         .addEventListener("click", function (event) {
-          event.preventDefault(); // Impede o comportamento padrão do link
+          event.preventDefault();
 
-          // Seleciona todos os inputs do formulário
           var inputs = document.querySelectorAll("input");
 
-          // Itera sobre os inputs e limpa seus valores
           inputs.forEach(function (input) {
             input.value = "";
           });
         });
-        document.getElementById("calculate").addEventListener("click", function () {
-  clearErrors();
+      // Function to calculate mortgage payment
+      document
+        .getElementById("calculate")
+        .addEventListener("click", function () {
+          clearErrors();
 
-  // Obtém valores dos inputs
-  const amount = parseFloat(document.getElementById("amount").value);
-  const term = parseInt(document.getElementById("term").value);
-  const rate = parseFloat(document.getElementById("rate").value) / 100;
-  const typeElement = document.querySelector('input[name="listGroupRadio"]:checked');
+          const amount = parseFloat(document.getElementById("amount").value);
+          const term = parseInt(document.getElementById("term").value);
+          const rate = parseFloat(document.getElementById("rate").value) / 100;
+          const typeElement = document.querySelector(
+            'input[name="listGroupRadio"]:checked'
+          );
 
-  // Verifica se os campos estão preenchidos
-  if (!validateFields(amount, term, rate, typeElement)) return;
+          if (!validateFields(amount, term, rate, typeElement)) return;
 
-  // Calcula o pagamento mensal
-  const { monthlyPayment, totalRepayment } = calculatePayments(amount, term, rate, typeElement.value);
+          const { monthlyPayment, totalRepayment } = calculatePayments(
+            amount,
+            term,
+            rate,
+            typeElement.value
+          );
 
-  // Atualiza o container de resultado com o pagamento mensal calculado
-  updateResults(monthlyPayment, totalRepayment);
+          updateResults(monthlyPayment, totalRepayment);
 
-  // Oculta conteúdo inicial e mostra o container de resultado
-  toggleVisibility();
-});
+          toggleVisibility();
+        });
 
-function clearErrors() {
-  document.querySelectorAll(".error-message").forEach(message => message.remove());
-  document.querySelectorAll(".border-input1, .border-input2, .border-input3").forEach(input => {
-    input.classList.remove("error");
-    input.parentElement.querySelector(".input-group-text")?.classList.remove("error-background");
-  });
-}
+      function clearErrors() {
+        document
+          .querySelectorAll(".error-message")
+          .forEach((message) => message.remove());
+        document
+          .querySelectorAll(".border-input1, .border-input2, .border-input3")
+          .forEach((input) => {
+            input.classList.remove("error");
+            input.parentElement
+              .querySelector(".input-group-text")
+              ?.classList.remove("error-background");
+          });
+      }
 
-function validateFields(amount, term, rate, typeElement) {
-  let isValid = true;
+      function validateFields(amount, term, rate, typeElement) {
+        let isValid = true;
 
-  if (isNaN(amount)) {
-    showError("amount", "This field is required");
-    isValid = false;
-  }
+        if (isNaN(amount)) {
+          showError("amount", "This field is required");
+          isValid = false;
+        }
 
-  if (isNaN(term)) {
-    showError("term", "This field is required");
-    isValid = false;
-  }
+        if (isNaN(term)) {
+          showError("term", "This field is required");
+          isValid = false;
+        }
 
-  if (isNaN(rate)) {
-    showError("rate", "This field is required");
-    isValid = false;
-  }
+        if (isNaN(rate)) {
+          showError("rate", "This field is required");
+          isValid = false;
+        }
 
-  if (!typeElement) {
-    showError("type", "This field is required", true);
-    isValid = false;
-  }
+        if (!typeElement) {
+          showError("type", "This field is required", true);
+          isValid = false;
+        }
 
-  return isValid;
-}
+        return isValid;
+      }
 
-function calculatePayments(amount, term, rate, type) {
-  let monthlyPayment = 0;
-  let totalRepayment = 0;
-  const monthlyRate = rate / 12;
-  const numberOfPayments = term * 12;
+      function calculatePayments(amount, term, rate, type) {
+        let monthlyPayment = 0;
+        let totalRepayment = 0;
+        const monthlyRate = rate / 12;
+        const numberOfPayments = term * 12;
 
-  if (type === "repayment") {
-    if (monthlyRate > 0) {
-      monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
-    } else {
-      monthlyPayment = amount / numberOfPayments;
-    }
-    totalRepayment = monthlyPayment * numberOfPayments;
-  } else if (type === "interestOnly") {
-    monthlyPayment = amount * monthlyRate;
-    totalRepayment = monthlyPayment * numberOfPayments;
-  }
+        if (type === "repayment") {
+          if (monthlyRate > 0) {
+            monthlyPayment =
+              (amount * monthlyRate) /
+              (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+          } else {
+            monthlyPayment = amount / numberOfPayments;
+          }
+          totalRepayment = monthlyPayment * numberOfPayments;
+        } else if (type === "interestOnly") {
+          monthlyPayment = amount * monthlyRate;
+          totalRepayment = monthlyPayment * numberOfPayments;
+        }
 
-  return { monthlyPayment, totalRepayment };
-}
+        return { monthlyPayment, totalRepayment };
+      }
 
-function updateResults(monthlyPayment, totalRepayment) {
-  document.getElementById("result-text").textContent = "£" + monthlyPayment.toFixed(2);
-  document.getElementById("total-repayment").textContent = "£" + totalRepayment.toFixed(2);
-}
+      function updateResults(monthlyPayment, totalRepayment) {
+        document.getElementById("result-text").textContent =
+          "£" + monthlyPayment.toFixed(2);
+        document.getElementById("total-repayment").textContent =
+          "£" + totalRepayment.toFixed(2);
+      }
 
-function toggleVisibility() {
-  document.getElementById("initial-content").classList.add("d-none");
-  document.getElementById("result-container").classList.remove("d-none");
-}
+      function toggleVisibility() {
+        document.getElementById("initial-content").classList.add("d-none");
+        document.getElementById("result-container").classList.remove("d-none");
+      }
 
-function showError(inputId, message, isRadio = false) {
-  if (isRadio) {
-    const radioContainer = document.querySelector(".mortgagetyp");
-    const errorMessage = document.createElement("div");
-    errorMessage.className = "error-message";
-    errorMessage.textContent = message;
-    radioContainer.appendChild(errorMessage);
-  } else {
-    const inputElement = document.getElementById(inputId);
-    inputElement.classList.add("error");
-    inputElement.parentElement.parentElement.querySelector(".input-group-text")?.classList.add("error-background");
+      function showError(inputId, message, isRadio = false) {
+        if (isRadio) {
+          const radioContainer = document.querySelector(".mortgagetyp");
+          const errorMessage = document.createElement("div");
+          errorMessage.className = "error-message";
+          errorMessage.textContent = message;
+          radioContainer.appendChild(errorMessage);
+        } else {
+          const inputElement = document.getElementById(inputId);
+          inputElement.classList.add("error");
+          inputElement.parentElement.parentElement
+            .querySelector(".input-group-text")
+            ?.classList.add("error-background");
 
-    const errorMessage = document.createElement("div");
-    errorMessage.className = "error-message";
-    errorMessage.textContent = message;
-    inputElement.parentElement.parentElement.appendChild(errorMessage);
-  }
-}
-
-
+          const errorMessage = document.createElement("div");
+          errorMessage.className = "error-message";
+          errorMessage.textContent = message;
+          inputElement.parentElement.parentElement.appendChild(errorMessage);
+        }
+      }
     </script>
   </body>
 </html>
