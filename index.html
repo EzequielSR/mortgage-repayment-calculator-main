@@ -67,7 +67,7 @@
         width: 100%;
         order: 1;
       }
-      .header-title{
+      .header-title {
         display: flex;
         justify-content: space-between;
       }
@@ -180,19 +180,19 @@
       .border-input {
         outline: none;
         padding: 5px;
-        border: none; 
-      }
-      .border-input1{
         border: none;
-        width: 390px
       }
-      .border-input2{
+      .border-input1 {
         border: none;
-        width: 84.8%
+        width: 390px;
       }
-      .border-input3{
+      .border-input2 {
         border: none;
-        width: 90.7%
+        width: 84.8%;
+      }
+      .border-input3 {
+        border: none;
+        width: 90.7%;
       }
       .selected-radio {
         background-color: hsla(
@@ -226,106 +226,116 @@
         box-shadow: none;
       }
       /* Estilo do container principal */
-.result-container {
-    background-color: #1c3b57;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 20px auto;
-}
-
-/* Título da seção de resultados */
-.result-container h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-    font-weight: normal;
-}
-
-/* Texto explicativo */
-.result-container p{
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-/* Caixa de resultados */
-.result-box {
-    background-color: hsl(201, 56%, 11%);
-    border-radius: 10px;
-    border-top: 5px solid hsl(61, 70%, 52%);
-    padding: 20px;
-    text-align: left;
-}
-
-/* Rótulos de resultados */
-.result-label {
-    color: hsl(203, 41%, 72%);
-    margin: 10px 0;
-}
-
-/* Valores de resultados */
-.result-value {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: white;
-}
-
-/* Linha horizontal */
-.result-box hr {
-    border: none;
-    border-top: 1px solid #c0c0c0;
-    margin: 20px 0;
-}
-
-.text{
-  text-align: left;
-  margin-bottom: 2rem;
-}
-.text p{
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  .container{
-    flex-direction: row;
-  }
-  .left-panel, .right-panel{
-    width: 50%;
-  }
-  .right-panel{
-    border-radius: 0px 0px 0px 99px;
-  }
-  .right-panel h2{
-    font-size: 2.5rem;
-  }
-  .right-panel p{
-    font-size: 1.25rem;
-  }
-  .border-input1{
-        border: none;
-        width: 338px
+      .result-container {
+        background-color: #1c3b57;
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 400px;
+        margin: 20px auto;
       }
-      .border-input2{
-        border: none;
-        width: 62.02%
-      }
-      .border-input3{
-        border: none;
-        width: 76.5%
-      }
-}
-@media (min-width: 1440px){
-  .container{
-    max-width: 910px;
-    width: 100%;
-    margin: 0 auto;
-  }
-  .left-panel, .right-panel{
-    padding: 40px;
-  }
 
-}
+      /* Título da seção de resultados */
+      .result-container h2 {
+        margin-top: 0;
+        font-size: 1.5em;
+        font-weight: normal;
+      }
+
+      /* Texto explicativo */
+      .result-container p {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      /* Caixa de resultados */
+      .result-box {
+        background-color: hsl(201, 56%, 11%);
+        border-radius: 10px;
+        border-top: 5px solid hsl(61, 70%, 52%);
+        padding: 20px;
+        text-align: left;
+      }
+
+      /* Rótulos de resultados */
+      .result-label {
+        color: hsl(203, 41%, 72%);
+        margin: 10px 0;
+      }
+
+      /* Valores de resultados */
+      .result-value {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: white;
+      }
+
+      /* Linha horizontal */
+      .result-box hr {
+        border: none;
+        border-top: 1px solid #c0c0c0;
+        margin: 20px 0;
+      }
+      .result-ctn {
+        flex-direction: column;
+      }
+      .text {
+        text-align: left;
+        margin-bottom: 2rem;
+      }
+      .text p {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          flex-direction: row;
+        }
+        .left-panel,
+        .right-panel {
+          width: 50%;
+        }
+        .right-panel {
+          border-radius: 0px 0px 0px 99px;
+        }
+        .right-panel h2 {
+          font-size: 2.5rem;
+        }
+        .right-panel p {
+          font-size: 1.25rem;
+        }
+        .border-input1 {
+          border: none;
+          width: 338px;
+        }
+        .border-input2 {
+          border: none;
+          width: 62.02%;
+        }
+        .border-input3 {
+          border: none;
+          width: 76.5%;
+        }
+        .result-container {
+          padding: 40px; /* Padding maior para telas maiores */
+          max-width: 600px; /* Aumentar a largura máxima em telas maiores */
+        }
+        .result-ctn {
+          flex-direction: row;
+        }
+      }
+      @media (min-width: 1440px) {
+        .container {
+          max-width: 910px;
+          width: 100%;
+          margin: 0 auto;
+        }
+        .left-panel,
+        .right-panel {
+          padding: 40px;
+        }
+      }
     </style>
   </head>
 
@@ -457,29 +467,43 @@
             class="img-fluid ms-3"
             style="width: 12rem; padding-bottom: 10px"
           />
-          <h4 class="fw-bold" style="margin-bottom: 15px">Results Shown here</h4>
+          <h4 class="fw-bold" style="margin-bottom: 15px">
+            Results Shown here
+          </h4>
           <p class="" style="font-size: 14px; color: hsl(203, 41%, 72%)">
             Complete the form and click “calculate repayments” to see what your
             monthly repayments would be.
           </p>
         </div>
         <!-- Caixa de resultado -->
-        <div id="result-container" class="d-none d-flex flex-md-column align-content-lg-stretch pb-5">
+        <div
+          id="result-container"
+          class="d-none d-flex flex-md-column align-content-lg-stretch pb-5 result-ctn"
+        >
           <div class="text">
             <h5 class="fw-bold">Your results</h5>
-            <p style="color:hsl(203, 41%, 72%)">Your results are shown below based on the information you provided. 
-              To adjust the results, edit the form and click “calculate repayments” again.</p>
-
+            <p style="color: hsl(203, 41%, 72%)">
+              Your results are shown below based on the information you
+              provided. To adjust the results, edit the form and click
+              “calculate repayments” again.
+            </p>
           </div>
-          <div class="result-box" >
-            <p class="result-label" style="font-size: 14px;">Your monthly repayments</p>
-            <p class="result-text" id="result-text" style="font-size: 3rem;color: hsl(61, 70%, 52%);"></p>
-            <hr>
-            <p class="result-label" style="font-size: 14px;">Total you'll repay over the term</p>
+          <div class="result-box">
+            <p class="result-label" style="font-size: 14px">
+              Your monthly repayments
+            </p>
+            <p
+              class="result-text"
+              id="result-text"
+              style="font-size: 3rem; color: hsl(61, 70%, 52%)"
+            ></p>
+            <hr />
+            <p class="result-label" style="font-size: 14px">
+              Total you'll repay over the term
+            </p>
             <p class="result-value" id="total-repayment"></p>
           </div>
         </div>
-        
       </div>
     </div>
 
@@ -531,64 +555,71 @@
             input.value = "";
           });
         });
-        document.getElementById("calculate").addEventListener("click", function () {
-  // Get values from the inputs
-  var amount = parseFloat(document.getElementById("amount").value);
-  var term = parseInt(document.getElementById("term").value);
-  var rate = parseFloat(document.getElementById("rate").value) / 100;
-  var type = document.querySelector('input[name="listGroupRadio"]:checked').value;
+      document
+        .getElementById("calculate")
+        .addEventListener("click", function () {
+          // Get values from the inputs
+          var amount = parseFloat(document.getElementById("amount").value);
+          var term = parseInt(document.getElementById("term").value);
+          var rate = parseFloat(document.getElementById("rate").value) / 100;
+          var type = document.querySelector(
+            'input[name="listGroupRadio"]:checked'
+          ).value;
 
-  // Check if the values are valid
-  if (isNaN(amount) || isNaN(term) || isNaN(rate) || !type) {
-    console.log("Please enter valid numbers for all fields and select a mortgage type.");
-    return;
-  }
+          // Check if the values are valid
+          if (isNaN(amount) || isNaN(term) || isNaN(rate) || !type) {
+            console.log(
+              "Please enter valid numbers for all fields and select a mortgage type."
+            );
+            return;
+          }
 
-  var monthlyPayment = 0;
+          var monthlyPayment = 0;
 
-  // Calculate based on the mortgage type
-  if (type === "repayment") {
-    // Repayment mortgage calculation
-    var monthlyRate = rate / 12;
-    var numberOfPayments = term * 12;
+          // Calculate based on the mortgage type
+          if (type === "repayment") {
+            // Repayment mortgage calculation
+            var monthlyRate = rate / 12;
+            var numberOfPayments = term * 12;
 
-    if (monthlyRate > 0) {
-      monthlyPayment =
-        (amount * monthlyRate) /
-        (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
-    } else {
-      monthlyPayment = amount / numberOfPayments; // For zero interest rate
-    }
+            if (monthlyRate > 0) {
+              monthlyPayment =
+                (amount * monthlyRate) /
+                (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+            } else {
+              monthlyPayment = amount / numberOfPayments; // For zero interest rate
+            }
 
-    totalRepayment = monthlyPayment * numberOfPayments;
+            totalRepayment = monthlyPayment * numberOfPayments;
+          } else if (type === "interestOnly") {
+            // Interest-only mortgage calculation
+            var monthlyRate = rate / 12;
+            monthlyPayment = amount * monthlyRate;
 
-  } else if (type === "interestOnly") {
-    // Interest-only mortgage calculation
-    var monthlyRate = rate / 12;
-    monthlyPayment = amount * monthlyRate;
+            totalRepayment = monthlyPayment * term * 12;
+          }
 
-    totalRepayment = monthlyPayment * term * 12
-  }
+          // Update the result container with the calculated monthly payment
+          var resultText = document.getElementById("result-text");
+          resultText.textContent = "£" + monthlyPayment.toFixed(2);
 
-  // Update the result container with the calculated monthly payment
-  var resultText = document.getElementById("result-text");
-  resultText.textContent = "£" + monthlyPayment.toFixed(2);
+          var totalRepaymentElement =
+            document.getElementById("total-repayment");
+          totalRepaymentElement.textContent = "£" + totalRepayment.toFixed(2);
 
-  var totalRepaymentElement = document.getElementById("total-repayment")
-  totalRepaymentElement.textContent = "£" + totalRepayment.toFixed(2)
-
-  // Hide initial content and show result container
-  document.getElementById("initial-content").classList.add("d-none");
-  document.getElementById("result-container").classList.remove("d-none");
-});
-function displayResult(amount, term, rate, type, monthlyPayment) {
-  console.log(`Amount: £${amount}`);
-  console.log(`Term: ${term} years`);
-  console.log(`Rate: ${rate * 100}%`);
-  console.log(`Type: ${type}`);
-  console.log(`Monthly Payment: £${monthlyPayment.toFixed(2)}`);
-}
-
+          // Hide initial content and show result container
+          document.getElementById("initial-content").classList.add("d-none");
+          document
+            .getElementById("result-container")
+            .classList.remove("d-none");
+        });
+      function displayResult(amount, term, rate, type, monthlyPayment) {
+        console.log(`Amount: £${amount}`);
+        console.log(`Term: ${term} years`);
+        console.log(`Rate: ${rate * 100}%`);
+        console.log(`Type: ${type}`);
+        console.log(`Monthly Payment: £${monthlyPayment.toFixed(2)}`);
+      }
     </script>
   </body>
 </html>
